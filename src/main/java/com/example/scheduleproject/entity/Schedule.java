@@ -1,7 +1,9 @@
 package com.example.scheduleproject.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 @Entity
 @Table(name="schedule")
 public class Schedule extends BaseEntity{
@@ -19,4 +21,11 @@ public class Schedule extends BaseEntity{
     @Column(columnDefinition = "longtext")
     private String contents;
 
+    public Schedule(){}
+
+    public Schedule(String writer, String title, String contents){
+        this.writer = writer;
+        this.title = title;
+        this.contents = contents;
+    }
 }
