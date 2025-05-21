@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,4 +37,10 @@ public class ScheduleService {
 
         return new ScheduleResponseDtoWithoutId(findSchedule.getWriter(), findSchedule.getTitle(), findSchedule.getContents());
     }
+
+    public List<ScheduleResponseDto> findAll(){
+        return scheduleRepository.findAll().stream().map(ScheduleResponseDto::toDto).toList();
+    }
+
+
 }

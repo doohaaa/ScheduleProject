@@ -1,5 +1,6 @@
 package com.example.scheduleproject.dto;
 
+import com.example.scheduleproject.entity.Schedule;
 import lombok.Getter;
 
 @Getter
@@ -14,6 +15,11 @@ public class ScheduleResponseDto {
         this.writer = writer;
         this.title = title;
         this.contents = contents;
+    }
+
+    // entity를 dto로 변환
+    public static ScheduleResponseDto toDto(Schedule schedule){
+        return new ScheduleResponseDto(schedule.getId(), schedule.getWriter(), schedule.getTitle(), schedule.getContents());
     }
 
 }

@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/schedules")
 @RequiredArgsConstructor
@@ -30,5 +32,12 @@ public class ScheduleController {
     public ResponseEntity<ScheduleResponseDtoWithoutId> findById(@PathVariable Long id){
         ScheduleResponseDtoWithoutId scheduleResponseDtoWithoutId = scheduleService.findById(id);
         return new ResponseEntity<>(scheduleResponseDtoWithoutId, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ScheduleResponseDto>> findAll(){
+        List<ScheduleResponseDto> scheduleResponseDtoList = scheduleService.findAll();
+
+        return new ResponseEntity<>(scheduleResponseDtoList, HttpStatus.OK);
     }
 }
