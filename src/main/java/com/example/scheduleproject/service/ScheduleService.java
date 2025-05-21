@@ -8,6 +8,7 @@ import com.example.scheduleproject.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -40,6 +41,13 @@ public class ScheduleService {
 
     public List<ScheduleResponseDto> findAll(){
         return scheduleRepository.findAll().stream().map(ScheduleResponseDto::toDto).toList();
+    }
+
+    @Transactional
+    public void updateSchedule(Long id, String title, String contents){
+        Schedule findSchedule = scheduleRepository.findByIdOrElseThrow(id);
+
+        findSchedule.updateSchedule(title, contents);
     }
 
 
