@@ -50,5 +50,11 @@ public class ScheduleService {
         findSchedule.updateSchedule(title, contents);
     }
 
+    public void deleteSchedule(Long id){
+        final Schedule schedule = scheduleRepository.findById(id).orElseThrow();
+
+        scheduleRepository.deleteById(id);
+    }
+
 
 }
