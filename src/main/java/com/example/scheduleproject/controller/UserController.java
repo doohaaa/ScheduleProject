@@ -1,6 +1,7 @@
 package com.example.scheduleproject.controller;
 
 
+import com.example.scheduleproject.dto.UserResponseDto;
 import com.example.scheduleproject.dto.UserSignUpRequestDto;
 import com.example.scheduleproject.dto.UserSignUpResponseDto;
 import com.example.scheduleproject.entity.User;
@@ -8,10 +9,7 @@ import com.example.scheduleproject.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
@@ -27,5 +25,11 @@ public class UserController {
                         requestDto.getEmail()
                 );
         return new ResponseEntity<>(userSignUpResponseDto, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserResponseDto> findById(@PathVariable Long id){
+        UserResponseDto userResponseDto = userService.findById(id);
+        return new ResponseEntity<>(userResponseDto, HttpStatus.OK);
     }
 }
