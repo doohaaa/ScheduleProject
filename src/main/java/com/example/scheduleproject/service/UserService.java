@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,5 +38,9 @@ public class UserService {
         User findUser = optionalUser.get();
 
         return new UserResponseDto(findUser.getUsername(), findUser.getEmail());
+    }
+
+    public List<UserResponseDto> findAll(){
+        return userRepository.findAll().stream().map(UserResponseDto::toDto).toList();
     }
 }

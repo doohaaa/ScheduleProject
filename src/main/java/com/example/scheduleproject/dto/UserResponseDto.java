@@ -1,5 +1,6 @@
 package com.example.scheduleproject.dto;
 
+import com.example.scheduleproject.entity.User;
 import lombok.Getter;
 
 @Getter
@@ -11,5 +12,9 @@ public class UserResponseDto {
     public UserResponseDto(String username, String email){
         this.username = username;
         this.email= email;
+    }
+
+    public static UserResponseDto toDto(User user){
+        return new UserResponseDto(user.getUsername(), user.getEmail());
     }
 }
