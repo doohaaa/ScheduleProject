@@ -1,6 +1,7 @@
 package com.example.scheduleproject.controller;
 
 
+import com.example.scheduleproject.dto.UpdateUserEmailRequestDto;
 import com.example.scheduleproject.dto.UserResponseDto;
 import com.example.scheduleproject.dto.UserSignUpRequestDto;
 import com.example.scheduleproject.dto.UserSignUpResponseDto;
@@ -40,5 +41,11 @@ public class UserController {
         List<UserResponseDto> userResponseDtoList = userService.findAll();
 
         return new ResponseEntity<>(userResponseDtoList, HttpStatus.OK);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Void> updateUserEmail(@PathVariable Long id, @RequestBody UpdateUserEmailRequestDto requestDto){
+        userService.updateUserEmail(id, requestDto.getNewEmail());
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

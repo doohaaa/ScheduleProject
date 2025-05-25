@@ -43,4 +43,11 @@ public class UserService {
     public List<UserResponseDto> findAll(){
         return userRepository.findAll().stream().map(UserResponseDto::toDto).toList();
     }
+
+    @Transactional
+    public void updateUserEmail(Long id, String newEmail){
+        User findUser = userRepository.findByIdOrElseThrow(id);
+
+        findUser.updateUserEmail(newEmail);
+    }
 }
