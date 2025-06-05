@@ -23,7 +23,7 @@ public class ScheduleService {
     public ScheduleResponseDto save(Long userId, String title, String contents){
         Schedule schedule = new Schedule(userId, title, contents);
         Schedule savedSchedule = scheduleRepository.save(schedule);
-        return new ScheduleResponseDto(savedSchedule.getId(), savedSchedule.getuseId(), savedSchedule.getTitle(), savedSchedule.getContents());
+        return new ScheduleResponseDto(savedSchedule.getId(), savedSchedule.getUserId(), savedSchedule.getTitle(), savedSchedule.getContents());
     }
 
     public ScheduleResponseDtoWithoutId findById(Long id){

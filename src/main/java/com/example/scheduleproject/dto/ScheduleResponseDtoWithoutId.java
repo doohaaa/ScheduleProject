@@ -4,12 +4,12 @@ import lombok.Getter;
 
 @Getter
 public class ScheduleResponseDtoWithoutId {
-    private final String writer;
+    private final Long userId;
     private final String title;
     private final String contents;
 
-    public ScheduleResponseDtoWithoutId(String writer, String title, String contents){
-        this.writer =writer;
+    public ScheduleResponseDtoWithoutId(Long userId, String title, String contents){
+        this.userId = userId;
         this.title = title;
         this.contents = contents;
     }
