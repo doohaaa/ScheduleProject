@@ -1,9 +1,8 @@
-package com.example.scheduleproject.service;
+package com.example.scheduleproject.domain.user;
 
-import com.example.scheduleproject.dto.UserResponseDto;
-import com.example.scheduleproject.dto.UserSignUpResponseDto;
-import com.example.scheduleproject.entity.User;
-import com.example.scheduleproject.repository.UserRepository;
+import com.example.scheduleproject.domain.user.dto.UserResponseDto;
+import com.example.scheduleproject.domain.user.dto.UserSignUpResponseDto;
+import com.example.scheduleproject.domain.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

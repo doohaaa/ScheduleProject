@@ -1,4 +1,4 @@
-package com.example.scheduleproject.dto;
+package com.example.scheduleproject.domain.user.dto;
 
 import lombok.Getter;
 

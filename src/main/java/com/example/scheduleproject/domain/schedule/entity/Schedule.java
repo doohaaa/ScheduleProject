@@ -1,12 +1,13 @@
-package com.example.scheduleproject.entity;
+package com.example.scheduleproject.domain.schedule.entity;
 
+import com.example.scheduleproject.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 
 @Getter
 @Entity
 @Table(name="schedule")
-public class Schedule extends BaseEntity{
+public class Schedule extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

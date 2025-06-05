@@ -1,6 +1,6 @@
-package com.example.scheduleproject.dto;
+package com.example.scheduleproject.domain.schedule.dto;
 
-import com.example.scheduleproject.entity.Schedule;
+import com.example.scheduleproject.domain.schedule.entity.Schedule;
 import lombok.Getter;
 
 @Getter

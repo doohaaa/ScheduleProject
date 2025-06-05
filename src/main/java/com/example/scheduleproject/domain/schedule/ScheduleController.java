@@ -1,12 +1,10 @@
-package com.example.scheduleproject.controller;
+package com.example.scheduleproject.domain.schedule;
 
-import com.example.scheduleproject.dto.CreateScheduleRequestDto;
-import com.example.scheduleproject.dto.ScheduleResponseDto;
-import com.example.scheduleproject.dto.ScheduleResponseDtoWithoutId;
-import com.example.scheduleproject.dto.UpdateTitleAndContentsRequestDto;
-import com.example.scheduleproject.service.ScheduleService;
+import com.example.scheduleproject.domain.schedule.dto.CreateScheduleRequestDto;
+import com.example.scheduleproject.domain.schedule.dto.ScheduleResponseDto;
+import com.example.scheduleproject.domain.schedule.dto.ScheduleResponseDtoWithoutId;
+import com.example.scheduleproject.domain.schedule.dto.UpdateTitleAndContentsRequestDto;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

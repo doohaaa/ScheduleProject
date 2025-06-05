@@ -1,4 +1,4 @@
-package com.example.scheduleproject.entity;
+package com.example.scheduleproject.domain.common;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

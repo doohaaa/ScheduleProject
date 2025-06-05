@@ -1,10 +1,8 @@
-package com.example.scheduleproject.service;
+package com.example.scheduleproject.domain.schedule;
 
-import com.example.scheduleproject.dto.CreateScheduleRequestDto;
-import com.example.scheduleproject.dto.ScheduleResponseDto;
-import com.example.scheduleproject.dto.ScheduleResponseDtoWithoutId;
-import com.example.scheduleproject.entity.Schedule;
-import com.example.scheduleproject.repository.ScheduleRepository;
+import com.example.scheduleproject.domain.schedule.dto.ScheduleResponseDto;
+import com.example.scheduleproject.domain.schedule.dto.ScheduleResponseDtoWithoutId;
+import com.example.scheduleproject.domain.schedule.entity.Schedule;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
