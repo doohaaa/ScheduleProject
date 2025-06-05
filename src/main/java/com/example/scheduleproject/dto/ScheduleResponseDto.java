@@ -6,20 +6,20 @@ import lombok.Getter;
 @Getter
 public class ScheduleResponseDto {
     private final Long id;
-    private final String writer;
+    private final Long userId;
     private final String title;
     private final String contents;
 
-    public ScheduleResponseDto(Long id, String writer, String title, String contents){
+    public ScheduleResponseDto(Long id, Long userId, String title, String contents){
         this.id = id;
-        this.writer = writer;
+        this.userId = userId;
         this.title = title;
         this.contents = contents;
     }
 
     // entity를 dto로 변환
     public static ScheduleResponseDto toDto(Schedule schedule){
-        return new ScheduleResponseDto(schedule.getId(), schedule.getWriter(), schedule.getTitle(), schedule.getContents());
+        return new ScheduleResponseDto(schedule.getId(), schedule.getUserId(), schedule.getTitle(), schedule.getContents());
     }
 
 }

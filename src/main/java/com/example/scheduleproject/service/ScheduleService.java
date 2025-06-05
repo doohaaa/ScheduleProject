@@ -20,10 +20,10 @@ public class ScheduleService {
 
     private final ScheduleRepository scheduleRepository;
 
-    public ScheduleResponseDto save(String writer, String title, String contents){
-        Schedule schedule = new Schedule(writer, title, contents);
+    public ScheduleResponseDto save(Long userId, String title, String contents){
+        Schedule schedule = new Schedule(userId, title, contents);
         Schedule savedSchedule = scheduleRepository.save(schedule);
-        return new ScheduleResponseDto(savedSchedule.getId(), savedSchedule.getWriter(), savedSchedule.getTitle(), savedSchedule.getContents());
+        return new ScheduleResponseDto(savedSchedule.getId(), savedSchedule.getuseId(), savedSchedule.getTitle(), savedSchedule.getContents());
     }
 
     public ScheduleResponseDtoWithoutId findById(Long id){
@@ -36,7 +36,7 @@ public class ScheduleService {
 
         Schedule findSchedule = optionalSchedule.get();
 
-        return new ScheduleResponseDtoWithoutId(findSchedule.getWriter(), findSchedule.getTitle(), findSchedule.getContents());
+        return new ScheduleResponseDtoWithoutId(findSchedule.getUserId(), findSchedule.getTitle(), findSchedule.getContents());
     }
 
     public List<ScheduleResponseDto> findAll(){
@@ -50,8 +50,8 @@ public class ScheduleService {
         findSchedule.updateSchedule(title, contents);
     }
 
+    @Transactional
     public void deleteSchedule(Long id){
-        final Schedule schedule = scheduleRepository.findById(id).orElseThrow();
 
         scheduleRepository.deleteById(id);
     }

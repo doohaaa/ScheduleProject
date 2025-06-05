@@ -50,4 +50,9 @@ public class UserService {
 
         findUser.updateUserEmail(newEmail);
     }
+
+    @Transactional
+    public void deleteUser(Long id){
+        userRepository.deleteById(id);
+    }
 }
