@@ -2,6 +2,7 @@ package com.example.scheduleproject.domain.user;
 
 
 import com.example.scheduleproject.domain.user.dto.*;
+import com.example.scheduleproject.domain.user.exception.PasswordMismatchedException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -72,5 +73,10 @@ public class UserController {
             session.invalidate();
         }
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<String> handleException(PasswordMismatchedException e){
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
     }
 }

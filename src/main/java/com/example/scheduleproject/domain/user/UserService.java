@@ -5,6 +5,7 @@ import com.example.scheduleproject.domain.user.dto.LoginResponseDto;
 import com.example.scheduleproject.domain.user.dto.UserResponseDto;
 import com.example.scheduleproject.domain.user.dto.UserSignUpResponseDto;
 import com.example.scheduleproject.domain.user.entity.User;
+import com.example.scheduleproject.domain.user.exception.PasswordMismatchedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -62,7 +63,7 @@ public class UserService {
                 .orElseThrow(()->new IllegalArgumentException("User not found. email = "+email));
 
         if(!user.getPassword().equals(password)){
-            throw new IllegalArgumentException("Password is inorrect. email = "+email);
+            throw new PasswordMismatchedException("Password is inorrect. email = "+email);
         }
         return LoginResponseDto.of(user);
     }
