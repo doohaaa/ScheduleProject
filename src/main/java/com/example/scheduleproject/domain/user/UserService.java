@@ -1,5 +1,7 @@
 package com.example.scheduleproject.domain.user;
 
+import com.example.scheduleproject.domain.user.dto.LoginRequestDto;
+import com.example.scheduleproject.domain.user.dto.LoginResponseDto;
 import com.example.scheduleproject.domain.user.dto.UserResponseDto;
 import com.example.scheduleproject.domain.user.dto.UserSignUpResponseDto;
 import com.example.scheduleproject.domain.user.entity.User;
@@ -53,5 +55,15 @@ public class UserService {
     @Transactional
     public void deleteUser(Long id){
         userRepository.deleteById(id);
+    }
+
+    public LoginResponseDto login(String email, String password){
+        final User user = userRepository.findByEmail(email)
+                .orElseThrow(()->new IllegalArgumentException("User not found. email = "+email));
+
+        if(!user.getPassword().equals(password)){
+            throw new IllegalArgumentException("Password is inorrect. email = "+email);
+        }
+        return LoginResponseDto.of(user);
     }
 }

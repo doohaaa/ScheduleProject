@@ -1,10 +1,9 @@
 package com.example.scheduleproject.domain.user;
 
 
-import com.example.scheduleproject.domain.user.dto.UpdateUserEmailRequestDto;
-import com.example.scheduleproject.domain.user.dto.UserResponseDto;
-import com.example.scheduleproject.domain.user.dto.UserSignUpRequestDto;
-import com.example.scheduleproject.domain.user.dto.UserSignUpResponseDto;
+import com.example.scheduleproject.domain.user.dto.*;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,6 +50,27 @@ public class UserController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id){
         userService.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Object> login(@RequestBody LoginRequestDto loginRequestDto, HttpServletRequest servletRequest){
+        final LoginResponseDto loginResponseDto = userService.login(loginRequestDto.getEmail(), loginRequestDto.getPassword());
+
+        // ? 이건 왜하는거
+        final HttpSession session = servletRequest.getSession();
+        session.setAttribute("user", loginResponseDto);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Object> logout(HttpServletRequest servletRequest){
+        HttpSession session = servletRequest.getSession(false);
+
+        if(session != null){
+            session.invalidate();
+        }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
