@@ -32,9 +32,4 @@ public class User extends BaseEntity{
         this.email = newEmail;
     }
 
-
-
-
-
-
 }

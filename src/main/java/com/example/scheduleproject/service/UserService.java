@@ -38,7 +38,7 @@ public class UserService {
 
         User findUser = optionalUser.get();
 
-        return new UserResponseDto(findUser.getUsername(), findUser.getEmail());
+        return new UserResponseDto(findUser.getId(), findUser.getUsername(), findUser.getEmail());
     }
 
     public List<UserResponseDto> findAll(){
